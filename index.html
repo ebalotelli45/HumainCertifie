@@ -98,15 +98,15 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-badge"><div class="pulse"></div>Early access ouvert — places limitées</div>
+  <div class="hero-badge"><div class="pulse"></div>Early access — 150 places maximum</div>
   <h1>Prouve que tu as<br>écrit <em>toi-même.</em></h1>
   <p class="hero-sub">Le premier outil qui certifie qu'un texte est 100% humain — sans IA, sans copier-coller. Un QR code vérifiable par ton recruteur ou ton prof.</p>
 
   <div class="counter-wrap">
     <div class="counter-num" id="counter">47</div>
-    <div class="counter-label">personnes déjà inscrites</div>
-    <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
-    <div class="progress-note">Objectif : 100 inscrits pour lancer</div>
+    <div class="counter-label">places prises sur 150</div>
+    <div class="progress-bar"><div class="progress-fill" id="fill" style="width:31.3%"></div></div>
+    <div class="progress-note">103 places restantes — early access à 9€</div>
   </div>
 
   <br>
@@ -200,15 +200,19 @@
 
 <footer>
   © 2026 HumainCertifié — La preuve que c'est vous.
+  <br><br>
+  <span style="font-size:11px; color:#ccc;">HumainCertifié certifie uniquement que le texte a été saisi manuellement dans l'application. L'utilisateur est seul responsable de l'originalité et de l'authenticité du contenu.</span>
 </footer>
 
 <script>
   let n = 47;
   function tick() {
-    if (Math.random() > 0.7 && n < 100) {
+    if (Math.random() > 0.7 && n < 150) {
       n++;
       document.getElementById('counter').textContent = n;
-      document.getElementById('fill').style.width = n + '%';
+      const pct = (n / 150) * 100;
+      document.getElementById('fill').style.width = pct.toFixed(1) + '%';
+      document.querySelector('.progress-note').textContent = (150 - n) + ' places restantes — early access à 9€';
     }
     setTimeout(tick, Math.random() * 30000 + 15000);
   }
